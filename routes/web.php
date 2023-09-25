@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Challenge;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Challenge 2 (Get Dublicates)
+Route::get('/get-dublicate', [Challenge::class, 'dublicate']);
