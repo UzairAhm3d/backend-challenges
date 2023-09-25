@@ -16,7 +16,29 @@ class AttendanceService {
         $this->request = Request::all();
     }
 
-    public function getAttendance() {
+    public function getAllAttendanceData() {
+
+        $result = Attendance::select('id', 'employee_id', 'check_in', 'check_out', 'hours as total_working_hours', 'created_at')
+                            ->with(['employee' => function($query) {
+                                $query->select('id', 'name');
+                            }])
+                            ->get();
+
+        if (count($result) > 0) {
+
+            return response()->json($result);
+
+        }else{
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Oops! No record found.'
+            ], 200);
+
+        }
+    }
+
+    public function getAttendanceByEmployeeId() {
 
         $result = (new Attendance())->getAttendanceByEmployeeId($this->request);
 
@@ -47,8 +69,7 @@ class AttendanceService {
             return $validator->errors();
         }
 
-        // dd($this->request['file']);
-        $re = Excel::import(new AttendanceImport, $this->request['file']);
+        Excel::import(new AttendanceImport, $this->request['file']);
 
         return response()->json([
             'status' => 200,

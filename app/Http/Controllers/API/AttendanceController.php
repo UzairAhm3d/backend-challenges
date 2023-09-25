@@ -9,10 +9,15 @@ use Src\AppHumanResources\Attendance\Application\AttendanceService;
 
 class AttendanceController extends Controller
 {
-
     public function index() {
 
-        return (new AttendanceService())->getAttendance();
+        return (new AttendanceService())->getAllAttendanceData();
+
+    }
+
+    public function show() {
+
+        return (new AttendanceService())->getAttendanceByEmployeeId();
 
     }
 

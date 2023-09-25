@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Src\AppHumanResources\Attendance\Application\ApplicationService;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +13,5 @@ use Src\AppHumanResources\Attendance\Application\ApplicationService;
 */
 
 Route::get('/', function () {
-    dd((new ApplicationService())->getAttendance());
-    // return view('app');
+    return view('welcome');
 });
