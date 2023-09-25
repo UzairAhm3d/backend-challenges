@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Src\AppHumanResources\Attendance\Application\ApplicationService;
 
 class Challenge extends Controller
 {
     public function dublicate($N = 5, $array = [2,3,1,2,3])
     {
-        $collection = collect($array);
-        $dublicates = $collection->duplicates();
+        return (new ApplicationService())->getDublicates($N, $array);
+    }
 
-        $result = $dublicates->toArray();
+    function groupBy() {
 
-        if (empty($result)) {
-            array_push($result, -1);
-            return $result;
-        }else{
-            return $result;
-        }
+        $array = [
+            "insurance.txt" => "Company A",
+            "letter.docx" => "Company A",
+            "Contract.docx" => "Company B"
+        ];
+
+        return (new ApplicationService())->groupByOwnersService($array);
     }
 }

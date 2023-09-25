@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 // Challenge 2 (Get Dublicates)
 Route::get('/get-dublicate', [Challenge::class, 'dublicate']);
+
+// Challenge 4 (groupByOwnersService)
+Route::get('/group-by-owener-services', [Challenge::class, 'groupBy']);
