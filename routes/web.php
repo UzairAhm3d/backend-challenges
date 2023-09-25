@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Src\AppHumanResources\Attendance\Application\ApplicationService;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd(random_int(1, 2));
+    dd((new ApplicationService())->getAttendance());
     // return view('app');
 });

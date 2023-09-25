@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Src\AppHumanResources\Providers\AttendanceServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -193,6 +194,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'AttendanceService' => Src\AppHumanResources\Attendance\Application\AttendanceService::class
     ])->toArray(),
 
 ];
