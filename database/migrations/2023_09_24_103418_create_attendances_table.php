@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('employee_id')->constrained();
             $table->foreignId('schedule_id')->constrained();
-            $table->time('check_in');
-            $table->time('check_out');
+            $table->time('check_in')->nullable();
+            $table->time('check_out')->nullable();
             $table->integer('hours');
             $table->timestamps();
         });
